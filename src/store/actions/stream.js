@@ -2,23 +2,7 @@ import history from "../../history";
 
 import * as actionTypes from "./type"
 import streams from "../../api/stream";
-
-import {toast} from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-
-toast.configure();
-
-const notify_success = (message) =>{
-    toast.success(`${message}`, {
-        position: toast.POSITION.TOP_RIGHT,
-        autoClose: 4000})
-}
-
-const notify_error = (message) =>{
-    toast.error(`${message}`, {
-        position: toast.POSITION.TOP_RIGHT,
-        autoClose: 4000})
-}
+import {notify_success} from "../../components/Notify";
 
 export const createStream = formValues => async (dispatch, getState) => {
     const response = await streams.post('/streams', {...formValues});

@@ -10,16 +10,11 @@ import Details from "./Project/Details";
 import LoginForm from "../components/LoginForm";
 
 
-function Project() {
+function UnAuthenticated() {
     return (
         <React.Fragment>
             <Switch>
-                <Route path="/" exact component={List}/>
-                <Route path="/streams/new" exact component={Create}/>
-                <Route path="/streams/edit/:id" exact component={Edit}/>
-                <Route path="/streams/delete/:id" exact component={Delete}/>
-                <Route path="/streams/:id" exact component={Details}/>
-                <Route path="/login/" exact component={LoginForm}/>
+                <Route path="/login" exact component={LoginForm}/>
             </Switch>
         </React.Fragment>
     );
@@ -29,4 +24,4 @@ const mapStateToProps = (state) =>{
     return {isAuthenticated: state.auth.isAuthenticated}
 }
 
-export default connect(mapStateToProps)(Project);
+export default connect(mapStateToProps)(UnAuthenticated);

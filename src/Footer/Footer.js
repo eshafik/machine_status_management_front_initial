@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 
 class Footer extends React.Component{
@@ -34,7 +35,7 @@ class Footer extends React.Component{
                             <script>
                                 document.write(new Date().getFullYear())
                             </script>
-                            <a href="/">Creative Tim</a>, made with love for a better web
+                            <Link href="/">MSI Shafik</Link>, made with love for a better web
                         </p>
                     </nav>
                 </div>

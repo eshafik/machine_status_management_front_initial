@@ -1,5 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import {connect} from 'react-redux';
+
+import {userLogin, userLogOut} from "../store/actions/auth";
 
 class Nav extends React.Component{
 
@@ -11,6 +14,21 @@ class Nav extends React.Component{
         this.setState({
             isToggled: !this.state.isToggled
         });
+    }
+
+    renderLogin(){
+        if (this.props.isAuthenticated){
+            return (
+                <Link className="nav-link" to="/login" onClick={this.props.userLogOut} >
+                    <span className="no-icon">Log out</span>
+                </Link>
+            )
+        }else {
+            return (
+                <Link className="nav-link" to="/login">
+                    <span className="no-icon">Login</span>
+                </Link>
+        )}
     }
 
     render() {
@@ -82,9 +100,7 @@ class Nav extends React.Component{
                                     </div>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/">
-                                        <span className="no-icon">Log out</span>
-                                    </Link>
+                                    {this.renderLogin()}
                                 </li>
                             </ul>
                         </div>
@@ -94,4 +110,8 @@ class Nav extends React.Component{
     }
 }
 
-export default Nav;
+const mapStateToProps = (state) => {
+    return {isAuthenticated: state.auth.isAuthenticated}
+}
+
+export default connect(mapStateToProps, {userLogin, userLogOut})(Nav);

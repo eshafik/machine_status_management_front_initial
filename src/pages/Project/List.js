@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from "react-router-dom";
-import _ from 'lodash';
+import {Link, Redirect} from "react-router-dom";
+import history from "../../history";
 
 import {fetchStreams} from "../../store/actions/stream";
 import Table from "../../components/Table";
@@ -27,6 +27,9 @@ class List extends React.Component{
     };
 
     render() {
+        if (! this.props.isAuthenticated){
+            return <Redirect to="/login" />;
+        }
         if (!this.props.streams){
             return <div>Loading</div>
         }
@@ -44,6 +47,7 @@ class List extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    return {streams: Object.values(state.streams.results)};
+    return {streams: Object.values(state.streams.results),
+            isAuthenticated: state.auth.isAuthenticated};
 };
 export default connect(mapStateToProps, {fetchStreams})(List);

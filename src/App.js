@@ -6,6 +6,7 @@ import SideBar from "./SideBar/SideBar";
 import Footer from "./Footer/Footer";
 import history from "./history";
 import Project from "./pages/Project";
+import UnAuthenticated from "./pages/UnAuthenticated";
 import IdleTimerContainer from "./components/IdleTimerContainer";
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
     <div className="wrapper">
         <IdleTimerContainer/>
         <Router history={history}>
-            <SideBar/>
+          <SideBar/>
           <div className="main-panel">
               <Nav/>
               <div className="content">
