@@ -6,10 +6,10 @@ import SideBar from "./SideBar/SideBar";
 import Footer from "./Footer/Footer";
 import history from "./history";
 import Project from "./pages/Project";
-import UnAuthenticated from "./pages/UnAuthenticated";
 import IdleTimerContainer from "./components/IdleTimerContainer";
 
 function App() {
+    console.log("env: ", process.env);
   return (
     <div className="wrapper">
         <IdleTimerContainer/>
