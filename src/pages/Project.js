@@ -8,6 +8,7 @@ import Edit from "./Project/Edit";
 import Delete from "./Project/Delete";
 import Details from "./Project/Details";
 import LoginForm from "../components/LoginForm";
+import Logout from "../components/Logout";
 
 
 function Project() {
@@ -20,6 +21,7 @@ function Project() {
                 <Route path="/streams/delete/:id" exact component={Delete}/>
                 <Route path="/streams/:id" exact component={Details}/>
                 <Route path="/login/" exact component={LoginForm}/>
+                <Route path="/logout/" exact component={Logout}/>
             </Switch>
         </React.Fragment>
     );

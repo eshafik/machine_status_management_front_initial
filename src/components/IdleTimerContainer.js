@@ -14,7 +14,7 @@ const IdleTimerContainer = (props) => {
         <div>
             <IdleTimer
                 ref={idleTimerRef}
-                timeout={30*1000} // 30 seconds
+                timeout={216000*1000} // 30 seconds
                 onIdle={onIdle}
             />
         </div>
