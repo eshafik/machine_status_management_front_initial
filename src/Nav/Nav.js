@@ -12,9 +12,9 @@ import Details from "../pages/Project/Details";
 import LoginForm from "../components/LoginForm";
 import Logout from "../components/Logout";
 
-class Nav extends React.Component{
+class Nav extends React.Component {
 
-    state={
+    state = {
         isToggled: false
     }
 
@@ -24,24 +24,25 @@ class Nav extends React.Component{
         });
     }
 
-    renderLogin(){
-        if (this.props.isAuthenticated){
+    renderLogin() {
+        if (this.props.isAuthenticated) {
             return (
-                <Link className="nav-link"  to="/logout" >
+                <Link className="nav-link" to="/logout">
                     <span className="no-icon">Log out</span>
                 </Link>
             )
-        }else {
+        } else {
             return (
                 <Link className="nav-link" to="/phone-login">
                     <span className="no-icon">Login</span>
                 </Link>
-        )}
+            )
+        }
     }
 
     render() {
-        const { isToggled } = this.state;
-        return(
+        const {isToggled} = this.state;
+        return (
             <React.Fragment>
                 <nav className="navbar navbar-expand-lg ">
                     <div className="container-fluid">
@@ -90,7 +91,9 @@ class Nav extends React.Component{
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/shafik">
-                                        <span className="no-icon">Account</span>
+                                        {this.props.isUserAuthenticated ?
+                                            <span className="no-icon">Account</span> :
+                                            <span className="no-icon">{localStorage.getItem('name')}</span>}
                                     </Link>
                                 </li>
                                 {/*<li className="nav-item dropdown">*/}

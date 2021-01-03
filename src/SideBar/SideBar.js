@@ -16,12 +16,16 @@ class SideBar extends React.Component{
                         <p>Dashboard</p>
                     </Link>
                 </li>
-                <li>
-                    <Link className="nav-link" to="/#">
-                        <i className="nc-icon nc-circle-09"/>
-                        <p>User Profile</p>
-                    </Link>
-                </li>
+                {localStorage.getItem('group') && localStorage.getItem('group') === 'DEV-ADMIN' ?
+                    <li>
+                        <Link className="nav-link" to="/#">
+                            <i className="nc-icon nc-circle-09"/>
+                            <p>Users Management</p>
+                        </Link>
+                    </li>
+                    : null
+                }
+
                 <li>
                     <Link className="nav-link" to="/#">
                         <i className="nc-icon nc-notes"/>

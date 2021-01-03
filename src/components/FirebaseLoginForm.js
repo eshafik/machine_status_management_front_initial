@@ -122,23 +122,32 @@ class FirebaseLoginForm extends React.Component{
         this.setState({has_submit:true});
         const phoneNumber = "+88" + formValues.username;
         const userStatus = checkUser(phoneNumber);
-        if (!userStatus.is_exists){
-            notify_error("User Doesn't Exists!");
-            this.setState({has_submit:false});
-            return null;
-        }
-        this.settUpRecaptcha();
-        const appVerifier = window.recaptchaVerifier;
-        firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-            .then((confirmationResult) => {
-                console.log("message has been sent!");
-                window.confirmationResult = confirmationResult;
-                // history.push('/otp/');
-                notify_info("OTP has been sent!");
-                this.setState({has_success:true, has_otp_submit: false})
-            }).catch((error) => {
-            notify_error("Error! Try again.");
-        });
+        userStatus.then((result)=> {
+            if (!result.is_exists){
+                notify_error("User Doesn't Exists!");
+                this.setState({has_submit:false});
+                return null;
+            }
+            localStorage.setItem('name', result.name);
+            localStorage.setItem('group', result.group);
+            this.settUpRecaptcha();
+            const appVerifier = window.recaptchaVerifier;
+            firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+                .then((confirmationResult) => {
+                    console.log("message has been sent!");
+                    window.confirmationResult = confirmationResult;
+                    // history.push('/otp/');
+                    notify_info("OTP has been sent!");
+                    this.setState({has_success:true, has_otp_submit: false})
+                }).catch((error) => {
+                notify_error("Error! Try again.");
+            });
+
+        })
+            .catch((error)=>{
+                notify_error("Network Error!");
+                console.log("Error: ", error);
+            })
 
     }
 
@@ -161,6 +170,7 @@ class FirebaseLoginForm extends React.Component{
                 });
             this.props.userLoginWithPhone();
         }).catch((error) => {
+            this.setState({has_otp_submit: false});
             console.log("submition error: ", error);
             notify_error("Error! Try again.");
         });
