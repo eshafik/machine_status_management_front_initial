@@ -28,7 +28,7 @@ class List extends React.Component{
 
     render() {
         if (! this.props.isAuthenticated){
-            return <Redirect to="/login" />;
+            return <Redirect to="/phone-login" />;
         }
         if (!this.props.streams){
             return <div>Loading</div>
@@ -48,6 +48,6 @@ class List extends React.Component{
 
 const mapStateToProps = (state) => {
     return {streams: Object.values(state.streams.results),
-            isAuthenticated: state.auth.isAuthenticated};
+            isAuthenticated: state.fbAuth.isUserAuthenticated};
 };
 export default connect(mapStateToProps, {fetchStreams})(List);

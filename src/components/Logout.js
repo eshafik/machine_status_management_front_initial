@@ -3,13 +3,14 @@ import {connect} from 'react-redux';
 import {Link, Redirect} from "react-router-dom";
 import {Modal} from 'react-bootstrap';
 
-import {userLogOut} from "../store/actions/auth";
+// import {userLogOut} from "../store/actions/auth";
+import {userLogOutWithPhone} from "../store/actions/firebaseAuth";
 import history from "../history";
 
 class Logout extends React.Component{
 
     onSubmit = () => {
-        this.props.userLogOut();
+        this.props.userLogOutWithPhone();
         history.push("/");
     }
 
@@ -32,10 +33,10 @@ class Logout extends React.Component{
 
     render() {
         if (!this.props.isAuthenticated){
-            return <Redirect to="/"/>;
+            return <Redirect to="/phone-login"/>;
         }
         return(
-            <Modal.Dialog show={true}  onHide={()=>history.push("/")}>
+            <Modal.Dialog >
                 <Modal.Header closeButton>Logout</Modal.Header>
                 <Modal.Body>{this.renderContent()}</Modal.Body>
                 <Modal.Footer>{this.renderActions()}</Modal.Footer>
@@ -45,8 +46,8 @@ class Logout extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    return {isAuthenticated: state.auth.isAuthenticated}
+    return {isAuthenticated: state.fbAuth.isUserAuthenticated}
 }
 
 
-export default connect(mapStateToProps, {userLogOut})(Logout);
+export default connect(mapStateToProps, {userLogOutWithPhone})(Logout);

@@ -2,7 +2,8 @@ import React from 'react';
 import {Link, Route, Switch} from "react-router-dom";
 import {connect} from 'react-redux';
 
-import {userLogin, userLogOut} from "../store/actions/auth";
+// import {userLoginWithPhone, userLogOut} from "../store/actions/auth";
+import {userLoginWithPhone, userLogOutWithPhone} from "../store/actions/firebaseAuth";
 import List from "../pages/Project/List";
 import Create from "../pages/Project/Create";
 import Edit from "../pages/Project/Edit";
@@ -32,7 +33,7 @@ class Nav extends React.Component{
             )
         }else {
             return (
-                <Link className="nav-link" to="/login">
+                <Link className="nav-link" to="/phone-login">
                     <span className="no-icon">Login</span>
                 </Link>
         )}
@@ -120,7 +121,7 @@ class Nav extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    return {isAuthenticated: state.auth.isAuthenticated}
+    return {isAuthenticated: state.fbAuth.isUserAuthenticated}
 }
 
-export default connect(mapStateToProps, {userLogin, userLogOut})(Nav);
+export default connect(mapStateToProps, {userLoginWithPhone, userLogOutWithPhone})(Nav);

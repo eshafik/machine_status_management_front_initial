@@ -48,7 +48,7 @@ class SideBar extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    return {isAuthenticated: state.auth.isAuthenticated}
+    return {isAuthenticated: state.fbAuth.isUserAuthenticated}
 }
 
 export default connect(mapStateToProps)(SideBar);

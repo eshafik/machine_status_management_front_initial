@@ -16,16 +16,6 @@ export const userLogin = formValues => async (dispatch, getState) => {
     }catch (e) {
         notify_error("Credential Mismatched...! Try Again..!")
     }
-    // const response = await backend.post('/users/token/', {...formValues});
-    // console.log("request: ", response.status);
-    // if (response.status === 200) {
-    //     notify_success("Login Success!");
-    // }else {
-    //     console.log("Mismatched....!");
-    //     notify_error("Authentication Error");
-    // }
-    // dispatch({type: actionTypes.LOG_IN, payload: response.data});
-    // history.push("/");
 };
 
 export const userLogOut = () => async (dispatch, getState) => {

@@ -14,3 +14,9 @@ export const notify_error = (message) =>{
         position: toast.POSITION.TOP_RIGHT,
         autoClose: 4000})
 }
+
+export const notify_info = (message) =>{
+    toast.info(`${message}`, {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 4000})
+}

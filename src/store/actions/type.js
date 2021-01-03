@@ -5,3 +5,5 @@ export const DELETE_STREAM = "DELETE_STREAM";
 export const EDIT_STREAM = "EDIT_STREAM";
 export const LOG_IN = "LOG_IN";
 export const LOG_OUT = "LOG_OUT";
+export const USER_LOG_IN = "USER_LOG_IN";
+export const USER_LOG_OUT = "USER_LOG_OUT";

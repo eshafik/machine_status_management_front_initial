@@ -27,25 +27,4 @@ function App() {
   );
 }
 
-// function App() {
-//     return (
-//         <div>
-//                 <Nav/>
-//                 <SideBar/>
-//         </div>
-//     );
-// }
-
-
 export default App;
-
-//navbar-toggler navbar-toggler-right
-// <button href="" className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-//         aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation"><span
-//     className="navbar-toggler-bar burger-lines"></span><span className="navbar-toggler-bar burger-lines"></span><span
-//     className="navbar-toggler-bar burger-lines"></span></button>
-
-// <button href="" className="navbar-toggler navbar-toggler-right toggled" type="button" data-toggle="collapse"
-//         aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation"><span
-//     className="navbar-toggler-bar burger-lines"></span><span className="navbar-toggler-bar burger-lines"></span><span
-//     className="navbar-toggler-bar burger-lines"></span></button>
