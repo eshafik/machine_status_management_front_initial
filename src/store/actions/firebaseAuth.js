@@ -2,9 +2,9 @@ import history from "../../history";
 
 import * as actionTypes from "./type"
 import firebaseRefreshToken from "../../api/firebaseRefreshToken";
-import {notify_error, notify_success} from "../../components/Notify";
+import {notify_success} from "../../components/Notify";
 
-const getToken = async () => {
+export const refreshToken = () => async dispatch => {
     if (!localStorage.getItem("refreshToken")){
         history.push("/phone-login");
     }else {
@@ -13,9 +13,11 @@ const getToken = async () => {
         if (response.status === 200) {
             localStorage.setItem('refreshToken', response.data.refresh_token);
             localStorage.setItem('idToken', response.data.id_token);
+            dispatch({type: actionTypes.REFRESH_TOKEN, payload: response.data});
         }
     }
-}
+
+};
 
 export const userLoginWithPhone = () => (dispatch) => {
     console.log("Entered into login action")

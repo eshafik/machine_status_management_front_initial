@@ -5,7 +5,7 @@ import Nav from "./Nav/Nav";
 import SideBar from "./SideBar/SideBar";
 import Footer from "./Footer/Footer";
 import history from "./history";
-import Project from "./pages/Project";
+import Project from "./pages/MainNavigation";
 import IdleTimerContainer from "./components/IdleTimerContainer";
 
 function App() {

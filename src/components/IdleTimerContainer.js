@@ -8,7 +8,7 @@ const IdleTimerContainer = (props) => {
     const idleTimerRef = useRef(null);
     const onIdle = () => {
         console.log("User Idle");
-        props.userLogOut();
+        // props.userLogOut();
     }
     return(
         <div>

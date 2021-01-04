@@ -10,9 +10,10 @@ import Details from "./Project/Details";
 import LoginForm from "../components/LoginForm";
 import Logout from "../components/Logout";
 import FirebaseLoginForm from "../components/FirebaseLoginForm";
+import UserDashboard from "./UserManagementDashboard/UserDashboard";
 
 
-function Project() {
+function MainNavigation() {
     return (
         <React.Fragment>
             <Switch>
@@ -24,6 +25,7 @@ function Project() {
                 <Route path="/login/" exact component={LoginForm}/>
                 <Route path="/phone-login/" exact component={FirebaseLoginForm}/>
                 <Route path="/logout/" exact component={Logout}/>
+                <Route path="/users/" exact component={UserDashboard}/>
             </Switch>
         </React.Fragment>
     );
@@ -33,4 +35,4 @@ const mapStateToProps = (state) =>{
     return {isAuthenticated: state.auth.isAuthenticated}
 }
 
-export default connect(mapStateToProps)(Project);
+export default connect(mapStateToProps)(MainNavigation);
